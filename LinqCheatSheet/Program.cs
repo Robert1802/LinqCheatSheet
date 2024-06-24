@@ -166,4 +166,15 @@ Console.WriteLine(maxAmountInDispute);
 var minAmountInDispute = cases.Min(c => c.AmountInDispute);
 Console.WriteLine(minAmountInDispute);
 
+// -----------------------------------------------------------------------------------------------------------------
+
+// ORDER BY
+
+// Ascending
+var lawyersByAmountInDisputeAsc = lawyers.OrderBy(l => l.Cases.Sum(c => c.AmountInDispute));
+
+// Descending
+var lawyersByAmountInDisputeDsc = lawyers.OrderByDescending(l => l.Cases.Sum(c => c.AmountInDispute));
+
+
 Console.Read();
