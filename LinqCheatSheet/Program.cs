@@ -1,5 +1,7 @@
 ﻿using LinqCheatSheet;
 
+// Setup Lawyers, Clients and Cases
+
 var lawyers = new[]
 {
     new Lawyer()
@@ -69,13 +71,17 @@ var cases = new[]
     },
 };
 
+// -----------------------------------------------------------------------------------------------------------------
+
 // WHERE
 // Assign cases only where our lawyer is equal to our looping lawyer   
-foreach(Lawyer lawyer in lawyers)
+foreach (Lawyer lawyer in lawyers)
     lawyer.Cases = cases.Where(c => c.Lawyer == lawyer).ToList();
 
 foreach(Client client in clients)
     client.Cases = cases.Where(c => c.Client == client).ToList();
+
+// -----------------------------------------------------------------------------------------------------------------
 
 // FIRST
 var workingFirstExample = lawyers.First(l => l.FirstName == "John");
@@ -93,6 +99,8 @@ catch (InvalidOperationException ex)
 // FirstOrDefault returns the default value for the specified datatype, if no matching element was found.
 // For classes thats null and for value types thats the default value. For int it is 0 for example.
 var firstOrDefaultExample = lawyers.FirstOrDefault(l => l.FirstName == "Joh");
+
+// -----------------------------------------------------------------------------------------------------------------
 
 // SINGLE
 // Single works like FIrst, but ensures, that only a single element matches the specified condition
@@ -122,4 +130,14 @@ catch (InvalidOperationException ex)
 // Everything else works just like Single
 var singleOrDefaultExample = lawyers.SingleOrDefault(l => l.FirstName == "John");
 
+// -----------------------------------------------------------------------------------------------------------------
 
+// ANY
+// Any lawyer that has a case with the CaseType pro bono
+var proBonoLawyers = lawyers.Where(l => l.Cases.Any(c => c.CaseType == CaseType.ProBono));
+
+// ALL
+// All lawyers that have a case and the CaseType is Commercial
+var commercialOnlyLawyers = lawyers.Where(l => l.Cases.All(c => c.CaseType == CaseType.Commercial));
+
+// -----------------------------------------------------------------------------------------------------------------
