@@ -187,4 +187,15 @@ var casesPerLawyer = lawyers.Select(l => l.Cases); // 2 lists of cases
 // SelectMany returns a flattened list
 var casesPerLawyerFlat = lawyers.SelectMany(l => l.Cases); // 4 cases
 
+// -----------------------------------------------------------------------------------------------------------------
+
+// FLUENT
+// We can chain Linq Queries
+var caseTitlesOfCommercialOnlyLawyers = lawyers
+    .Where(l => l.Cases.All(c => c.CaseType == CaseType.Commercial))
+    .SelectMany(l => l.Cases)
+    .Select(c => c.Title);
+
+// -----------------------------------------------------------------------------------------------------------------
+
 Console.Read();
