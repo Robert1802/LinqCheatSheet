@@ -176,5 +176,15 @@ var lawyersByAmountInDisputeAsc = lawyers.OrderBy(l => l.Cases.Sum(c => c.Amount
 // Descending
 var lawyersByAmountInDisputeDsc = lawyers.OrderByDescending(l => l.Cases.Sum(c => c.AmountInDispute));
 
+// -----------------------------------------------------------------------------------------------------------------
+
+// SELECT
+var caseTitles = cases.Select(c => c.Title).ToList();
+var lawyerNames = lawyers.Select(l => l.FirstName + ", " + l.LastName);
+
+// Select returns a list of lists here
+var casesPerLawyer = lawyers.Select(l => l.Cases); // 2 lists of cases
+// SelectMany returns a flattened list
+var casesPerLawyerFlat = lawyers.SelectMany(l => l.Cases); // 4 cases
 
 Console.Read();
