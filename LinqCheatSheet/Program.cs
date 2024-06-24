@@ -85,6 +85,7 @@ foreach(Client client in clients)
 
 // FIRST
 var workingFirstExample = lawyers.First(l => l.FirstName == "John");
+Console.WriteLine(workingFirstExample);
 
 try
 {
@@ -99,12 +100,14 @@ catch (InvalidOperationException ex)
 // FirstOrDefault returns the default value for the specified datatype, if no matching element was found.
 // For classes thats null and for value types thats the default value. For int it is 0 for example.
 var firstOrDefaultExample = lawyers.FirstOrDefault(l => l.FirstName == "Joh");
+Console.WriteLine(firstOrDefaultExample);
 
 // -----------------------------------------------------------------------------------------------------------------
 
 // SINGLE
 // Single works like FIrst, but ensures, that only a single element matches the specified condition
 var workingSingleExample = lawyers.Single(lawyers => lawyers.FirstName == "John");
+Console.WriteLine(workingSingleExample);
 
 try
 {
@@ -129,16 +132,19 @@ catch (InvalidOperationException ex)
 // For classes thats null and for value types thats the default value. For int it is 0 for example.
 // Everything else works just like Single
 var singleOrDefaultExample = lawyers.SingleOrDefault(l => l.FirstName == "John");
+Console.WriteLine(singleOrDefaultExample);
 
 // -----------------------------------------------------------------------------------------------------------------
 
 // ANY
 // Any lawyer that has a case with the CaseType pro bono
 var proBonoLawyers = lawyers.Where(l => l.Cases.Any(c => c.CaseType == CaseType.ProBono));
+Console.WriteLine(proBonoLawyers);
 
 // ALL
 // All lawyers that have a case and the CaseType is Commercial
 var commercialOnlyLawyers = lawyers.Where(l => l.Cases.All(c => c.CaseType == CaseType.Commercial));
+Console.WriteLine(commercialOnlyLawyers);
 
 // -----------------------------------------------------------------------------------------------------------------
 
