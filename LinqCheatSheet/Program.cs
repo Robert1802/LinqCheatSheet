@@ -141,3 +141,23 @@ var proBonoLawyers = lawyers.Where(l => l.Cases.Any(c => c.CaseType == CaseType.
 var commercialOnlyLawyers = lawyers.Where(l => l.Cases.All(c => c.CaseType == CaseType.Commercial));
 
 // -----------------------------------------------------------------------------------------------------------------
+
+// Working with numbers
+
+// SUM
+var sumOfAmountInDispute = cases.Sum(c => c.AmountInDispute);
+Console.WriteLine(sumOfAmountInDispute);
+
+// AVERAGE
+var averageAmountInDispute = cases.Average(c => c.AmountInDispute);
+Console.WriteLine(averageAmountInDispute);
+
+// MAX
+var maxAmountInDispute = cases.Max(c => c.AmountInDispute);
+Console.WriteLine(maxAmountInDispute);
+
+// MIN
+var minAmountInDispute = cases.Min(c => c.AmountInDispute);
+Console.WriteLine(minAmountInDispute);
+
+Console.Read();
